@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getDatabase } from 'firebase/database'
 
-//ESLINT-disable-next-line
+
 const apiKey = import.meta.env.VITE_REACT_PUBLIC_FIREBASE_API_KEY
 const projectId = import.meta.env.VITE_REACT_APP_FIREBASE_PROJECT_ID
 const messagingSenderId = import.meta.env
