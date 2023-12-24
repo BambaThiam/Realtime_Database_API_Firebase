@@ -1,29 +1,27 @@
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from 'firebase/app'
-// import { getAnalytics } from 'firebase/analytics'
+import { initializeApp } from 'firebase/app'
+import { getDatabase } from 'firebase/database'
 
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/database'
+//ESLINT-disable-next-line
+const apiKey = import.meta.env.VITE_REACT_PUBLIC_FIREBASE_API_KEY
+const projectId = import.meta.env.VITE_REACT_APP_FIREBASE_PROJECT_ID
+const messagingSenderId = import.meta.env
+  .VITE_REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+const appId = import.meta.env.VITE_REACT_APP_FIREBASE_APP_ID
+const measurementId = import.meta.env.VITE_REACT_APP_FIREBASE_MEASUREMENT_ID
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}.firebaseapp.com`,
-  databaseURL: `https://${process.env.REACT_APP_FIREBASE_PROJECT_ID}-default-rtdb.europe-west1.firebasedatabase.app`,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}.appspot.com`,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  apiKey,
+  authDomain: `${projectId}.firebaseapp.com`,
+  databaseURL: `https://${projectId}-default-rtdb.europe-west1.firebasedatabase.app`,
+  projectId,
+  storageBucket: `${projectId}.appspot.com`,
+  messagingSenderId,
+  appId,
+  measurementId,
 }
 
 // Initialize Firebase
-function initFirebase() {
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig)
-  }
-}
-initFirebase()
-// const app = initializeApp(firebaseConfig)
-// const analytics = getAnalytics(app)
-export { firebase }
+const app = initializeApp(firebaseConfig)
+const db = getDatabase(app)
+
+export { db }
